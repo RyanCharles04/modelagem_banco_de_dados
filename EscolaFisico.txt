@@ -9,3 +9,25 @@ create table Turma ( numero int primary key, turno char(1) not null, definicao v
 insert into aluno values ( 3001, 'Godofredo Henrique', '2000-03-15', '123.456.789-01', 'Godojane Maia', 'gh@email.com' );
 
  insert into aluno values ( null, 'Josefina Winter', '1945-02-10', '123.456.789-02', 'Clenisbaldo Winter', null) ;
+
+create table disciplina ( cod_displina int primary key auto_increment, nome varchar(30) not null);
+
+create table estuda ( idEstuda int primary key auto_increment, fk_Aluno_matricula int not null, fk_Turma_numero int not null );
+
+alter table estuda add constraint fkmat foreign key (fk_Aluno_matricula) references Aluno (matricula);
+
+alter table estuda add constraint fknum foreign key (fk_Turma_numero) references Turma (numero);
+
+create table possui ( idPossui int primary key auto_increment, fk_Disciplina_cod_disciplina int not null, fk_Turma_numero int not null );
+
+alter table possui add constraint fkdis foreign key (fk_Disciplina_cod_disciplina) references disciplina (cod_displina);
+
+alter table possui add constraint fktur foreign key (fk_Turma_numero) references turma (numero);
+
+create table professor ( matricula int primary key auto_increment, nome varchar(80) not null, formacao varchar(30));
+
+create table leciona ( idLeciona int primary key auto_increment, fk_Disciplina_cod_disciplina int not null, fk_Professor_matricula int not null);
+
+alter table leciona add constraint fkdis2 foreign key ( fk_Disciplina_cod_disciplina) references disciplina ( cod_displina);
+
+alter table leciona add constraint fkpro foreign key (fk_professor_matricula) references professor (matricula);
