@@ -1,0 +1,5 @@
+Exercícios sobre o banco de dados zona eleitoral
+
+1- select eleitor.nome, secaoeleitoral.numeroSecao, secaoeleitoral.descricao from eleitor, secaoeleitoral where secaoeleitoral.numeroSecao = eleitor.fk_secaoeleitoral_numerosecao;
+
+2- select localidade.nomelocalidade, zonaeleitoral.numeroZE, zonaeleitoral.nomeZE from localidade, zonaeleitoral where localidade.idlocalidade = zonaeleitoral.fk_localidade_idlocalidade;
